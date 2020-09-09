@@ -12,10 +12,15 @@ import (
 )
 
 // Complete the miniMaxSum function below.
-func miniMaxSum(arr []int) {
-sort.Ints(arr) 
-min := arr[0]+arr[1]+arr[2]+arr[3]
-max := arr[1]+arr[2]+arr[3]+arr[4]
+func miniMaxSum(arr []int32) {
+var arr2 []int
+sort.Slice(arr, func(i, j int) bool { return arr[i] < arr[j] })
+for i :=range arr{
+    arr2 = append(arr2, int(arr[i]))
+}
+//sort.Ints(arr2)
+min := arr2[0]+arr2[1]+arr2[2]+arr2[3]
+max := arr2[1]+arr2[2]+arr2[3]+arr2[4]
 fmt.Println(min,max)
 }
 
@@ -24,12 +29,12 @@ func main() {
 
     arrTemp := strings.Split(readLine(reader), " ")
 
-    var arr []int
+    var arr []int32
 
     for i := 0; i < 5; i++ {
         arrItemTemp, err := strconv.ParseInt(arrTemp[i], 10, 64)
         checkError(err)
-        arrItem := int(arrItemTemp)
+        arrItem := int32(arrItemTemp)
         arr = append(arr, arrItem)
     }
 
