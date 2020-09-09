@@ -8,20 +8,23 @@ import (
     "os"
     "strconv"
     "strings"
-    "sort"
 )
 
 // Complete the miniMaxSum function below.
 func miniMaxSum(arr []int32) {
-var arr2 []int
-sort.Slice(arr, func(i, j int) bool { return arr[i] < arr[j] })
-for i :=range arr{
-    arr2 = append(arr2, int(arr[i]))
+var elems int64
+var maxel int32 = arr[0]
+var minel int32 = arr[0]
+
+for i:=0; i<5;i++{
+    if arr[i]>maxel{
+        maxel = arr[i]
+    } else if arr[i]<minel{
+        minel = arr[i]
+    }
+    elems += int64(arr[i])
 }
-//sort.Ints(arr2)
-min := arr2[0]+arr2[1]+arr2[2]+arr2[3]
-max := arr2[1]+arr2[2]+arr2[3]+arr2[4]
-fmt.Println(min,max)
+fmt.Println(elems-int64(maxel),elems-int64(minel))
 }
 
 func main() {
